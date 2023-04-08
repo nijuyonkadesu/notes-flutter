@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesflutter/data/note_data.dart';
 import 'package:notesflutter/single_note.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class NotesHomePage extends StatefulWidget {
 
 class _NotesHomePageState extends State<NotesHomePage> {
 
+  NoteDetails data = NoteDetails();
   void _newNote() {
     setState(() {
     });
@@ -44,26 +46,11 @@ class _NotesHomePageState extends State<NotesHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      // body: _buildNoteList(),
-      body: ListView(
-        children: [
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-          SingleNote(),
-        ],
+      body: ListView.builder(
+        itemCount: data.noteDetails.length,
+        itemBuilder: (BuildContext context, int index){
+          return SingleNote(data.noteDetails[index]);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _newNote,
