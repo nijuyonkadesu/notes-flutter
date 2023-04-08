@@ -49,7 +49,12 @@ class _NotesHomePageState extends State<NotesHomePage> {
       body: ListView.builder(
         itemCount: data.noteDetails.length,
         itemBuilder: (BuildContext context, int index){
-          return SingleNote(data.noteDetails[index]);
+          return InkWell(
+              onTap: () {
+                debugPrint('Card tapped.');
+              },
+              child: SingleNote(data.noteDetails[index])
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(
