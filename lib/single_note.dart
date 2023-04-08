@@ -20,15 +20,12 @@ class _SingleNoteState extends State<SingleNote> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            child: Text(contentTitle),
-          ),
-          Container(
-            child: Text("#$contentHashTag"),
-          ),
-          Container(
-            padding: EdgeInsets.all(8),
-            child: Text(content),
+          ListTile(
+            leading: Icon(Icons.notes),
+            title: Text(contentTitle),
+            subtitle: Text("#$contentHashTag"),
+            titleTextStyle: Theme.of(context).textTheme.titleMedium,
+            subtitleTextStyle:Theme.of(context).textTheme.titleSmall,
           )
         ],
       ),

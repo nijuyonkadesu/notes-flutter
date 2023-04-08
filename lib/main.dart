@@ -42,7 +42,6 @@ class _NotesHomePageState extends State<NotesHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
       // body: _buildNoteList(),
@@ -68,7 +67,7 @@ class _NotesHomePageState extends State<NotesHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _newNote,
-        tooltip: 'Increment',
+        tooltip: 'Take Note',
         child: const Icon(Icons.add),
       ),
     );
