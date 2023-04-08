@@ -26,7 +26,14 @@ class _SingleNoteState extends State<SingleNote> {
             subtitle: Text("#$contentHashTag"),
             titleTextStyle: Theme.of(context).textTheme.titleMedium,
             subtitleTextStyle:Theme.of(context).textTheme.titleSmall,
-          )
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(48.0, 0, 8.0, 16.0),
+            child: Text(
+                content,
+                style: Theme.of(context).textTheme.bodyMedium
+            ),
+          ),
         ],
       ),
     );
