@@ -1,7 +1,7 @@
 class NoteDetail {
-  final String content;
-  final String contentTitle;
-  final String contentHashTag;
+  late final String content;
+  late String contentTitle;
+  late String contentHashTag;
 
   NoteDetail(this.content, this.contentTitle, this.contentHashTag);
 }

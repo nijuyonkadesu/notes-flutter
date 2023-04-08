@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notesflutter/data/note_data.dart';
+import 'package:notesflutter/add_page.dart';
 import 'package:notesflutter/single_note.dart';
 
 void main() {
@@ -35,14 +36,30 @@ class NotesHomePage extends StatefulWidget {
 class _NotesHomePageState extends State<NotesHomePage> {
 
   NoteDetails data = NoteDetails();
-  void _newNote() {
+  void _newNote(NoteDetail note) {
     setState(() {
+      data.noteDetails.add(note);
     });
+  }
+
+  final _scaffoldKey =
+  GlobalKey<ScaffoldState>();
+
+  void _showBottomSheet(){
+    _scaffoldKey.currentState!.showBottomSheet((context) =>
+        NewNoteCard(
+          (note) {
+            debugPrint(note.content);
+            _newNote(note);
+          },
+        )
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -50,15 +67,20 @@ class _NotesHomePageState extends State<NotesHomePage> {
         itemCount: data.noteDetails.length,
         itemBuilder: (BuildContext context, int index){
           return InkWell(
-              onTap: () {
-                debugPrint('Card tapped.');
-              },
-              child: SingleNote(data.noteDetails[index])
+            onTap: () {
+              // TODO: Add Edit Feature
+              // TODO: Challenge! Add SQL database to persist data!
+            },
+            child: SingleNote(
+              data.noteDetails[index],
+            ),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _newNote,
+        onPressed: (){
+          _showBottomSheet();
+        },
         tooltip: 'Take Note',
         child: const Icon(Icons.add),
       ),
