@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesflutter/single_note.dart';
 
 void main() {
   runApp(const MyNotesApp());
@@ -31,11 +32,9 @@ class NotesHomePage extends StatefulWidget {
 }
 
 class _NotesHomePageState extends State<NotesHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
+  void _newNote() {
     setState(() {
-      _counter++;
     });
   }
 
@@ -46,28 +45,31 @@ class _NotesHomePageState extends State<NotesHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: _buildNoteList(),
+      // body: _buildNoteList(),
+      body: ListView(
+        children: [
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+          SingleNote(),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _newNote,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ),
-    );
-  }
-
-  Center _buildNoteList(){
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Text(
-            'Count: ',
-          ),
-          Text(
-            '$_counter',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-        ],
       ),
     );
   }
